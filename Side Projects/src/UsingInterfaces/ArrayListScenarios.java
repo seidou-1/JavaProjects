@@ -47,6 +47,12 @@ public class ArrayListScenarios {
         
         int redPosition = myList.indexOf("Red"); //The indexOf method gets the index slot of my myList object
         System.out.println("The color Red is in the spot position " + redPosition);
+        
+        //Using an enhanced for loop below to loop through objects in a Hashmap
+        for (String anyName : myList){
+            System.out.println("\n" + anyName); // The "\n" is simply to break the line and write the results on seperate spaced out lines
+            
+        }
     }
 
 }
