@@ -14,17 +14,17 @@ public class CharacterDTO { //This class is the actual object i'll be working it
     
     //Below i'm establishing the properties of the object (getters and setters)
     
-    private String nameeeee;
+    private String name;
     private String age;
     private String hairColor;
     private String rank;
 
     public String getName() {
-        return nameeeee;
+        return name;
     }
 
     public void setName(String name) {
-        this.nameeeee = name;
+        this.name = name;
     }
 
     public String getAge() {

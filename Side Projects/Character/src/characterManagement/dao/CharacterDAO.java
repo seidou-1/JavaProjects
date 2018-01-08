@@ -18,7 +18,7 @@ public interface CharacterDAO {
     //The methods below will drive the operations this class interface can perform
     //This is my interface and i will create an implementation of this interface
     
-    CharacterDTO createCharacter(CharacterDTO whateverParamName);
+    CharacterDTO createCharacter(CharacterDTO characterDataSet);
     /* createCharacter: CharacterDTO is the data type aka the object i will be working with
     I'm passing it the Character object as a paramater..
     So whoever calls this method, has to supply the Chacacter object
@@ -27,14 +27,14 @@ public interface CharacterDAO {
     
     CharacterDTO getCharacterByName (String name);
     /* getCharacterByName: In order to read and return a character, i need to return a List of
-    characters. So i'm going to use a hashMap for that - which is the method below.
+    characters. So i'm going to use a hashMap for that - which is the hashMap below.
     */
     
     List<CharacterDTO> getAllCharacters(); //HashMap
     
-    void updateCharacter (String name, CharacterDTO whatevaParamName);
+    void updateCharacter (String name, CharacterDTO characterDataSet);
     /* updateCharacter: To update a character, i just need to send information to the DAO
-    "whatevaParamName" is the information you're looking to save.
+    "characterDataSet" is the information you're looking to save.
     Nothing needs to get returned that's why it's void.
     */
     
