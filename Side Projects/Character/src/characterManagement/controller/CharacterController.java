@@ -5,6 +5,7 @@
  */
 package characterManagement.controller;
 
+import characterManagement.UI.CharacterView;
 import characterManagement.dao.CharacterDAO;
 import characterManagement.dto.CharacterDTO;
 import java.util.List;
@@ -17,12 +18,16 @@ public class CharacterController {
     
     CharacterDAO myDao;
 //    ClassRosterView myView;
+    
+    //This is a way of instantiating CharacterView:
+    CharacterView myView;
 
-    public CharacterController(CharacterDAO myDao) {
+    public CharacterController(CharacterDAO myDao, CharacterView myView) {
         /*
         Creating a constructor here for the Dao and for the view
         */
         this.myDao = myDao;
+        this.myView = myView;
     }
 
     public void run() {
@@ -34,29 +39,32 @@ public class CharacterController {
          */
         
         while (true){
-             int menuSelection = 0; //menuSelectio has to have a value before i can use it so i'm setting it to zero here
+             int menuSelection = myView.displayMenuAndGetUserSelection(); //menuSelectio has to have a value before i can use it so i'm setting it to zero here
              boolean keepGoing = true;
              switch (menuSelection){
                  
-                 case 0:
+                 case 1:
                      createCharacter();
                      break;
 
-                 case 1:
+                 case 2:
                      updateCharacter();
                      break;
 
-                 case 2:
+                 case 3:
                      displayAllCharacters();
                      break;
-                 case 3:
+                 case 4:
                      displayCharacter();
                      break;
-                 case 4:
+                 case 5:
+                     deleteCharacter();
+                 case 6:
                      keepGoing = false;
                  default:
                      break;
              }
+             //Should have a message here that says Goodbye or something
         }
         
     }
@@ -70,8 +78,9 @@ public class CharacterController {
         */
         
         CharacterDTO myCharacter = new CharacterDTO(); //instantiated a DTO
+        myCharacter = myView.createCharacter();
         myDao.createCharacter(myCharacter); //calling "createCharacter(CharacterDTO characterDataSet)" and passing a CharacterDTO data type called "myCharacter"
-
+        
     }
 
     private void updateCharacter() {
@@ -83,7 +92,9 @@ public class CharacterController {
         CharacterDTO myCharacter = myDao.getCharacterByName(placeHolderName);//I'm passing the character object to this dao method. The controller hass to pass to the DAO
         if (myCharacter!=null) { //placeHolderName is the name that the user provides
             //display the character via the View
+            myView.displayCharacterInfo(myCharacter);
             //prompt for edits
+            myCharacter = myView.updateCharacter(myCharacter);
             myDao.updateCharacter(placeHolderName, myCharacter);
             
         } else{
@@ -99,7 +110,8 @@ public class CharacterController {
         for (CharacterDTO anyName : myLoopingList){
             
             //display characters
-            System.out.println("\n" + anyName);
+//            System.out.println("\n" + anyName);
+            myView.displayCharacterInfo(anyName);
         } 
 
     }
@@ -112,7 +124,8 @@ public class CharacterController {
         CharacterDTO myCharacter = myDao.getCharacterByName(placeHolderName);//I'm passing the character object to this dao method. The controller hass to pass to the DAO
         if (myCharacter!=null) {
             //display the character via the View
-            
+                        myView.displayCharacterInfo(myCharacter);
+
         } else{
             //display no character found
         }

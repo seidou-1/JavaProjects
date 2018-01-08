@@ -15,7 +15,7 @@ public class CharacterDTO { //This class is the actual object i'll be working it
     //Below i'm establishing the properties of the object (getters and setters)
     
     private String name;
-    private String age;
+    private int age;
     private String hairColor;
     private String rank;
 
@@ -27,11 +27,11 @@ public class CharacterDTO { //This class is the actual object i'll be working it
         this.name = name;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

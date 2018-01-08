@@ -14,6 +14,8 @@ public class UserViewImpl implements UserView {
     The purpose of this class is to rinse and reuse. Rather than constantly doing a
     System.out.println(); and have a scanner attached, i can just call one of these methods
     and pass in what i want as variables. The methods will do the displaying for me
+    
+    Anytime I say "display" or "prompt", i'm calling the CharacterView class
      */
     private Scanner myScanner = new Scanner(System.in);
 
@@ -40,8 +42,9 @@ public class UserViewImpl implements UserView {
     public int promptInt(String takesIn) {
         int result = 0;
         while (result == 0) {
-            String userInput = prompt(takesIn);
-            result = Integer.parseInt(takesIn);
+            String userInput = prompt(takesIn); //Creting a variable called userInput and assigning it to call the prompt method
+            //The prompt method method takes in what was just passed, and adds a scanner to it
+            result = Integer.parseInt(takesIn); //This takes the string the user inputted and parses it to an int
 
         }
         return result;
