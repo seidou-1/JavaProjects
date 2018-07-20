@@ -80,6 +80,34 @@ public class Loops {
             print (x)
             if (x==5): break
         */
+        
+        
+        
+        /*
+        If we wanted to skip certain things within the for loop, we would
+        use the continue keyword. The continue keyword is a bit of a misnomer
+        because it implies we are continuing regardless; while in fact we are
+        actually skipping whichever conditions are applicable. 
+        
+        This is what the continue keyword looks like in Java:
+        */
+        
+        for (int i = 0; i < 10; i++) {
+            if (i % 2 == 0) { //If we divide i by 2 and that equals zero, skip from printing that number. 
+                continue; //In layman's terms this if statement is telling Java to skip all even numbers
+            }
+            
+            System.out.println(i); //otherwise print out i
+            
+        }
+        
+        /*
+        In Python, the continue statement would look like this:
+        
+        for x in range(0, 10):    
+            if (x % 2 == 0): continue
+            print (x)
+        */
     }
 
 }
